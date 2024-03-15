@@ -8,11 +8,22 @@ import io.ktor.server.routing.*
 fun Application.configureRouting() {
     routing {
         post("/users/{userId}/timeline") {
-            call.respond(HttpStatusCode.Created)
+            call.response.status(HttpStatusCode.Created)
+            call.respond(
+                    """
+                {
+                    "postId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+                    "userId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+                    "text": "Hello, I'm Alice",
+                    "dateTime": "2018-01-10T11:30:00Z"
+                }
+            """
+            )
         }
         get("/users/{userId}/timeline") {
             call.response.status(HttpStatusCode.OK)
-            call.respond("""
+            call.respond(
+                    """
                 [
                     {
                         "postId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
@@ -21,7 +32,8 @@ fun Application.configureRouting() {
                         "dateTime": "2018-01-10T11:30:00Z"
                     }
                 ]
-            """)
+            """
+            )
         }
     }
 }
