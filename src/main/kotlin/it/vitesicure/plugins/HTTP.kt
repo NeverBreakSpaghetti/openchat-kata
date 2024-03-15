@@ -5,6 +5,7 @@ import io.ktor.server.application.*
 import io.ktor.server.plugins.cors.routing.*
 
 fun Application.configureHTTP() {
+// @TODO: check and clear not necessary configurations
     install(CORS) {
         allowMethod(HttpMethod.Options)
         allowMethod(HttpMethod.Put)
