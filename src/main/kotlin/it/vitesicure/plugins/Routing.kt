@@ -10,5 +10,18 @@ fun Application.configureRouting() {
         post("/users/{userId}/timeline") {
             call.respond(HttpStatusCode.Created)
         }
+        get("/users/{userId}/timeline") {
+            call.response.status(HttpStatusCode.OK)
+            call.respond("""
+                [
+                    {
+                        "postId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+                        "userId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+                        "text": "Hello, I'm Alice",
+                        "dateTime": "2018-01-10T11:30:00Z"
+                    }
+                ]
+            """)
+        }
     }
 }

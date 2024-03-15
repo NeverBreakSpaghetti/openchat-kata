@@ -51,6 +51,6 @@ class CustomerShould {
                     "dateTime": "2018-01-10T11:30:00Z"
                 }
             ]
-        """.trimIndent(), response.bodyAsText())
+        """.trimIndent(), response.bodyAsText().trimIndent())
     }
 }
